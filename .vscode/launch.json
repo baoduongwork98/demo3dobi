@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "demo3dobj",
+            "cwd": "demo3dobj",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "demo3dobj (profile mode)",
+            "cwd": "demo3dobj",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "demo3dobj (release mode)",
+            "cwd": "demo3dobj",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
