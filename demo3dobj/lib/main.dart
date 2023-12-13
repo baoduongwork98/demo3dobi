@@ -13,18 +13,33 @@ class MainApp extends StatelessWidget {
                   let dataset = annotation.dataset;
                   modelViewer2.cameraTarget = dataset.target;
                   modelViewer2.cameraOrbit = dataset.orbit;
+                   
                 }
                 function hideInfor(){
-                  modelViewer2.querySelector("#infor-hybrid").style.display = 'none';
-                  modelViewer2.querySelector("#infor-research").style.display = 'none';
-                  modelViewer2.querySelector("#infor-qc").style.display = 'none';
-                  modelViewer2.querySelector("#infor-mobile").style.display = 'none';
-                  modelViewer2.querySelector("#infor-phpweb").style.display = 'none';
-                  modelViewer2.querySelector("#infor-admin").style.display = 'none';
+                   const idsInfor = ["infor-hybrid", "infor-research", "infor-qc", "infor-mobile", "infor-phpweb", "infor-admin"];
+                    idsInfor.forEach(id => {
+                      modelViewer2.querySelector("#"+id).style.display = 'none';
+                  });
+                }
+                function showHideBtn(isShow,excludeId){
+                  const idsButton = ["hybrid", "research", "qc", "mobile", "phpweb", "admin"];
+                  if(isShow)
+                  {
+                      idsButton.forEach(id => {
+                      modelViewer2.querySelector("#"+id).style.display = 'block';
+                       });
+                  }
+                  else
+                  {
+                      idsButton.forEach(id => {
+                      
+                      if(excludeId != id)
+                      modelViewer2.querySelector("#"+id).style.display = 'none';
+                      });
+                  }
                 }
                 function updateInfor(id) {
                    hideInfor();
-                  //  modelViewer2.querySelectorAll(".inforbtn").style.display = 'none';
                 switch(id){
                   case "hybrid":
                     var infor = modelViewer2.querySelector("#infor-hybrid"); 
@@ -62,9 +77,11 @@ class MainApp extends StatelessWidget {
                       modelViewer2.cameraTarget = '0m 0m 0m';
                       modelViewer2.cameraOrbit = 'auto auto 100%';
                       hideInfor();
+                      showHideBtn(true,hotspot.id);
                     }
                     else
                     {
+                     showHideBtn(false,hotspot.id);
                       annotationClicked(hotspot);
                       updateInfor(hotspot.id);
                     }
